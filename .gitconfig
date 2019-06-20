@@ -1,0 +1,5 @@
+[user]
+	name = jrtechs
+	email = jeffery@jrtechs.net
+[core]
+	autocrlf = input

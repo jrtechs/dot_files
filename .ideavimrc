@@ -1,0 +1,4 @@
+" Imports vim rc file into the 
+" idea vim rc
+
+source ~/.vimrc
