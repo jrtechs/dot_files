@@ -1,26 +1,33 @@
 #!/bin/bash
 
-
 echo Installing standard software
 
-# Change to root user
-su
+sudo dnf update -y
+sudo dnf upgrade -y
 
-dnf update
-dnf upgrade
+sudo dnf install zsh -y
+sudo dnf install git -y
+sudo dnf install node -y
+sudo dnf install npm -y
+sudo dnf install python3 -y
+sudo dnf install rsync -y
+sudo dnf install htop -y
+sudo dnf install fuse-exfat -y
 
-dnf install zsh
-dnf install git
-dnf install node
-dnf install npm
-dnf install python3
-dnf install rsync
-dnf install htop
+sudo dnf install texlive-scheme-full -y
+sudo dnf install pandoc -y
 
-dnf install darktable
+sudo dnf -y install mariadb-server mariadb
+sudo systemctl start mariadb.service
+sudo systemctl enable mariadb.service
+
+# fix multi media issue with firefox
+sudo dnf groupupdate multimedia
+
+sudo dnf install darktable -y
 
 echo Configuring zsh
-# Configuring zsh
+# Configuring zsh as default shell
 chsh -s /bin/zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
@@ -35,6 +42,7 @@ git config --global user.email "jeffery@jrtechs.net"
 echo Installing bash manager
 cd /home/jeff
 
+# Personal mount points used
 mkdir media
 mkdir public
 mkdir work
@@ -43,14 +51,9 @@ mkdir scripts
 cd scripts
 git clone https://github.com/jrtechs/bash_manager.git
 
-chsh -s $(which zsh)
-su jeff
-chsh -s $(which zsh)
-su
 
-
-dnf install sshfs
-dnf install fuse
+sudo dnf install sshfs -y
+sudo dnf install fuse -y
 
 cd ..
 
@@ -70,7 +73,7 @@ echo "user_allow_other" >> /etc/fuse.conf
 
 echo Installing all the fun software with snap.
 # On Work Stations
-dnf install snapd
+sudo dnf install snapd -y
 
 ## Discord
 snap install discord
@@ -99,4 +102,4 @@ snap install webstorm --classic
 
 echo Restart!!
 
-reboot
+sudo reboot
