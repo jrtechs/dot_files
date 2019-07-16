@@ -100,6 +100,17 @@ snap install intellij-idea-community --classic
 snap install phpstorm --classic
 snap install webstorm --classic
 
+# SSH stuff
+sudo dnf install openssh-server -y
+sudo systemctl start sshd.service
+sudo systemctl enable sshd.service
+sudo dnf -y install fail2ban
+sudo systemctl start fail2ban
+sudo systemctl enable fail2ban
+
+# Desktop Environment
+sudo dnf -y group install "Xfce Desktop" 
+
 echo Restart!!
 
 sudo reboot
