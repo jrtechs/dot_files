@@ -36,7 +36,7 @@ echo Setting global git config
 # Set up github configuration
 git config --global user.name "jrtechs"
 git config --global user.email "jeffery@jrtechs.net"
-
+git config --global core.editor "vim"
 
 
 echo Installing bash manager
