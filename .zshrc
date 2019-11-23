@@ -13,8 +13,9 @@ export PATH=$PATH:$HOME/dotnet
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="rkj-repos"
 
+#ZSH_THEME="rkj-repos"
+#ZSH_THEME="bira"
 ZSH_THEME="agnosterzak"
 
 # Uncomment the following line to use hyphen-insensitive completion.
@@ -40,6 +41,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
   git
   history-substring-search
+  z
+  extract
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -55,6 +58,7 @@ alias nano="vim"
 alias ..="cd .."
 alias size="echo du -sh && du -sh"
 
+
 # Bash Manager Things
 alias roosay="python3 /home/jeff/scripts/bash_manager/src/roosay.py"
 alias ss="python3 /home/jeff/scripts/bash_manager/src/ssh_manager.py"
@@ -69,9 +73,27 @@ alias pp="python3 /home/jeff/scripts/RandomScripts/other/markdownParagraphFormat
 # Alias for moving to common directories
 alias blog="cd /home/jeff/Documents/git/NodeJSBlog/blogContent/posts"
 
+# auto ls when you change directories
 function cd {
 	builtin cd "$@" && ls
 }
 
+
+# Function that removes all files with a specific extension.
+function begone 
+{
+    if [ $# -eq 1 ]
+    then
+        echo "Removing files with $1 extension RECURSIVELY!"
+        find . -name "*.$1" -type f -delete
+        ls
+    else
+        echo "Must pass in extension to begone!"
+    fi
+}
+
+
 # displays quote when terminal opens
 quote
+
+eval $(thefuck --alias)
