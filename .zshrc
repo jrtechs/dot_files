@@ -47,6 +47,14 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Config to fix ZSH when running in windows sub system
+# zsh will try to run background things at a lower priority
+# which wondows doesn't allow this is a hot workaround
+case $(uname -a) in
+    *Microsoft* unsetopt BG_NICE ;;
+esac
+
+
 # ssh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
