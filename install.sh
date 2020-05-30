@@ -14,6 +14,8 @@ sudo dnf install rsync -y
 sudo dnf install htop -y
 sudo dnf install fuse-exfat -y
 
+sudo dnf install imagemagick -y
+
 sudo dnf install texlive-scheme-full -y
 sudo dnf install pandoc -y
 
