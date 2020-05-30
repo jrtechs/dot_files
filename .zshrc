@@ -100,6 +100,23 @@ function begone
     fi
 }
 
+# recursively searches for a text fragment in a file
+function findme
+{
+    grep -nr "$1"
+}
+
+
+# removes meta data from images
+function strip
+{
+    echo "Removing image meta data on png and jpg images"
+    mogrify -strip ./*.jpg
+    mogrify -strip ./*.JPG
+    mogrify -strip ./*.png
+    mogrify -strip ./*.PNG
+}
+
 
 # displays quote when terminal opens
 quote
